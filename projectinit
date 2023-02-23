@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+cp -r ~/.config/projprofiles/$1 $2/
+

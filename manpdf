@@ -1,0 +1,2 @@
+#!/bin/sh
+man -Tpdf $1 > /home/oliver/Documents/$1.pdf; xreader /home/oliver/Documents/$1.pdf &

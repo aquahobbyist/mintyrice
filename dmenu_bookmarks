@@ -1,0 +1,28 @@
+#!/bin/bash
+
+#defining global variables 
+SELECTOR="dmenu"
+BROWSER="firefox"
+BOOKMARKLOC="/home/oliver/.config/bookmarks"
+
+getItems () {
+		grep "[id]\s$1" $BOOKMARKLOC | awk "{print \$$(echo $2)}" 
+}
+
+SELECTION=$(getItems 0 3 | $SELECTOR)
+SELITEM=$(grep $SELECTION $BOOKMARKLOC | head -n 1)
+while [ $(echo $SELITEM | awk '{print $1}') == 'd' ]; do
+
+		PWCAT=$(echo $SELITEM | awk '{print $4}')
+		SELECTION=$(getItems $PWCAT 3 | $SELECTOR)
+		SELITEM=$(grep $SELECTION $BOOKMARKLOC | head -n 1)
+
+done
+if [ $(echo $SELITEM | awk '{print $5}' | wc -w) == 0 ]; then
+
+		$BROWSER $(echo $SELITEM | awk '{print $4}')
+else
+		$(echo $SELITEM | awk '{print $5}') $(echo $SELITEM | awk '{print $4}')
+fi
+
+

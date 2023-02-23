@@ -1,0 +1,11 @@
+#!/bin/bash
+date "+%s" > copystamp
+cp ~/.vimrc .
+cp ~/.bashrc .
+cp ~/.config/nvim/init.vim .
+cp ~/.config/i3/config .
+cp ~/.config/neofetch/config.conf .
+cp ~/.config/ranger/rc.conf .
+cp ~/.tmux.conf .
+cp ~/bin/* .
+cp ~/scripts/* .
